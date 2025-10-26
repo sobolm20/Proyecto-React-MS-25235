@@ -1,24 +1,11 @@
-import { Button, Card, Col } from "react-bootstrap";
+import Wines from '../components/ProductList'
 
-export default function ingredients (){
+export default function Filtrado() {
 
     return(
-        <div>
-            <Row>
-                {productos.map((prod)=>(
-                    <Col key={prod.id}>
-                        <Card className="mb-4 shadow-sm">
-                            <Card.Img variant="top" src="{prod.img}" />
-                            <Card.Body>
-                                <Card.Title>{prod.nombre}</Card.Title>
-                                <Card.Text>{prod.precio}</Card.Text>
-                                <Button variant="primary">Agregar</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))
-                }
-            </Row>
+        <div className="container py-4">
+            <h1 className="text-center mb-4">Vino Seleccionado</h1>
+            <Wines />
         </div>
 
     )

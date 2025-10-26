@@ -10,19 +10,19 @@ export const FiltersProvider = ({ children }) => {
     winery: "all"
   })
 
-  const filterProducts = (products) => {
+  const filterProducts = (wines) => {
     return(
-      products.filter ((product) => {
+      wines.filter ((wine => {
         return(
-          product.rating >= filters.rating ||
+          wine.rating >= filters.rating ||
             (
             filters.winery == "all" || 
-            product.winery == filters.winery
+            wine.winery == filters.winery
             )
         )
       }
       )
-    )
+    ))
   }
 
   return(

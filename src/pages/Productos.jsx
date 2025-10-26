@@ -1,11 +1,11 @@
-import ProductCard from '../components/ProductCard';
+import Products from '../components/ProductCard';
 
 
 export default function Producto (){
 
     return(
         <div>
-            <ProductCard />
+            <Products />
         </div>
 
     )

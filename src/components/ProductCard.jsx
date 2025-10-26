@@ -1,12 +1,12 @@
 import React from "react";  
-import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { useEffect, useState } from 'react';
+import { Row, Col, Card, Button } from "react-bootstrap";
 
 
-export default function products (){
+export default function Products (){
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(true)
-    const [error, setError] = useEffect(null)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         fetch('https://api.sampleapis.com/wines/reds')
@@ -25,17 +25,17 @@ export default function products (){
      if (error) return <p>Error...</p>;
 
     return (
-        <div>
-            <h2>Carta de Vinos</h2>
+        <div className="container py-4">
+            <h2 className="text-center mb-4">Carta de Vinos</h2>
             <Row>
                 {productos.map((prod) => (
-                <Col key={prod.id} md={3}>
-                    <Card className="mb-4 shadow-sm">
-                    <Card.Img variant="top" src={prod.image} />
-                    <Card.Body>
-                        <Card.Title>{prod.wine}</Card.Title>
-                        <Card.Text>Bodega: {prod.winery}</Card.Text>
-                        <Button variant="primary">Agregar</Button>
+                <Col key={prod.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
+                    <Card className="h-100 shadow-sm">
+                    <Card.Img variant="top" src={prod.image} style={{ height: '200px', objectFit: 'cover' }} />
+                    <Card.Body className="d-flex flex-column">
+                        <Card.Title className="fw-bold">{prod.wine}</Card.Title>
+                        <Card.Text className="text-muted">Bodega: {prod.winery}</Card.Text>
+                        <Button variant="primary" className="mt-auto">Agregar</Button>
                     </Card.Body>
                     </Card>
                 </Col>
