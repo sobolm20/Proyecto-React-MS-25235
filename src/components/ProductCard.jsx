@@ -1,15 +1,17 @@
 import React from "react";  
+import { useContext } from 'react'; //A
+import { CartContext } from "../components/CartContext"; //A
 import { useEffect, useState } from 'react';
 import { Row, Col, Card, Button } from "react-bootstrap";
-
 
 export default function Products (){
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(true)
     const [error, setError] = useState(null)
+    const { agregarAlCarrito } = useContext(CartContext);
 
     useEffect(() => {
-        fetch('https://api.sampleapis.com/wines/reds')
+        fetch('https://69189e0321a963594870a83b.mockapi.io/products')
             .then((respuesta)=>respuesta.json())
             .then((datos)=>{
                 setProductos(datos);
@@ -20,6 +22,11 @@ export default function Products (){
                 setCargando(false);
             });
     }, []);
+
+    //A
+    const handleAgregar = (producto) => {
+        agregarAlCarrito(producto);
+    };
 
      if (cargando) return <p>Cargando personajes...</p>;
      if (error) return <p>Error...</p>;
@@ -34,8 +41,10 @@ export default function Products (){
                     <Card.Img variant="top" src={prod.image} style={{ height: '200px', objectFit: 'cover' }} />
                     <Card.Body className="d-flex flex-column">
                         <Card.Title className="fw-bold">{prod.wine}</Card.Title>
-                        <Card.Text className="text-muted">Bodega: {prod.winery}</Card.Text>
-                        <Button variant="primary" className="mt-auto">Agregar</Button>
+                        <Card.Text className="text-muted">Producto: {prod.title}</Card.Text>
+                        <Button variant="primary" className="mt-auto" onClick={() => handleAgregar(prod)}>
+                            Agregar
+                        </Button>
                     </Card.Body>
                     </Card>
                 </Col>
