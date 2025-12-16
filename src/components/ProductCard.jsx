@@ -42,6 +42,7 @@ export default function Products (){
                     <Card.Body className="d-flex flex-column">
                         <Card.Title className="fw-bold">{prod.wine}</Card.Title>
                         <Card.Text className="text-muted">Producto: {prod.title}</Card.Text>
+                        <Card.Text className="text-muted">Precio: {prod.price}</Card.Text>
                         <Button variant="primary" className="mt-auto" onClick={() => handleAgregar(prod)}>
                             Agregar
                         </Button>
